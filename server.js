@@ -47,4 +47,4 @@ io.on('connection', socket => {
 
 // == Step 3 : Setup a port for server ==
 // Set a port which will be used for server
-server.listen(6000);
+server.listen(3000);

@@ -12,12 +12,27 @@ const myVideo = document.createElement('video');
 // Mute the user's voice itself
 myVideo.muted = true;
 
+navigator.mediaDevices.getUserMedia({
+  video: true,
+  audio: true,
+}).then(stream => {
+  addVideoStream(myVideo, stream);
+
+  socket.on('user-connected', userId => {
+    connectToNewUser(userId, stream);
+  });
+});
+
 myPeer.on('open', id => {
   socket.emit('join-room', ROOM_ID, id);
 });
 
-socket.emit('join-room', ROOM_ID, 10);
+socket.emit('join-room', ROOM_ID, id);
 
-socket.on('user-connected', userId => {
-  console.log('A user connected :', userId);
-});
+function addVideoStream(video, stream) {
+  video.srcObject = stream;
+  video.addEventListener('loadedmetadata', () => {
+    video.play();
+  });
+  videoGrid.append(video);
+}

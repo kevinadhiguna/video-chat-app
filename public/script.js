@@ -41,6 +41,7 @@ myPeer.on('open', id => {
 });
 
 function connectToNewUser(userId, stream) {
+  // Calling a user with ID of userId and sending our audio and video stream
   const call = myPeer.call(userId, stream);
   const video = document.createElement('video');
   

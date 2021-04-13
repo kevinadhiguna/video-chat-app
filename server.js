@@ -40,7 +40,7 @@ io.on('connection', socket => {
     socket.broadcast.to(roomId).emit('user-connected', userId);
 
     socket.on('disconnect', () => {
-      socket.io(roomId).broadcast.emit('user-disconnected', userId);
+      socket.to(roomId).broadcast.emit('user-disconnected', userId);
     })
   });
 });

@@ -12,6 +12,8 @@ const myVideo = document.createElement('video');
 // Mute the user's voice itself
 myVideo.muted = true;
 
+const peers = {};
+
 navigator.mediaDevices.getUserMedia({
   video: true,
   audio: true,

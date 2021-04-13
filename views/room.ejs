@@ -5,8 +5,26 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Video Chat App</title>
+  <style>
+    #video-grid {
+      /* Setup grid display (square video : 300px x 300 px) */
+      display: grid;
+      /* Every single column should be 300px wide */
+      grid-template-columns: repeat(auto-fill, 300px);
+      /* Every single row should be 300px tall */
+      grid-auto-rows: 300px;
+    }
+
+    video {
+      /* In order to make videos still square, we set width and height to 100% */
+      width: 100%;
+      height: 100%;
+      /* Zoom the video until it fills the entire square and cut off edges */
+      object-fit: cover;
+    }
+  </style>
 </head>
 <body>
-  
+  <div id="video-grid"></div>
 </body>
 </html>

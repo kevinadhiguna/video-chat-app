@@ -16,7 +16,7 @@ const peers = {};
 
 navigator.mediaDevices.getUserMedia({
   video: true,
-  audio: true,
+  audio: true
 }).then(stream => {
   addVideoStream(myVideo, stream);
 

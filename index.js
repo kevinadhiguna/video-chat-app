@@ -36,7 +36,8 @@ app.get('/:room', (req, res) => {
 io.on('connection', socket => {
   // Whenever someone connects with socket.io, pass roomId and userId
   socket.on('join-room', (roomId, userId) => {
-    console.log(roomId, userId);
+    socket.join(roomId);
+    socket.broadcast.to(roomId).emit('user-connected', userId);
   });
 });
 

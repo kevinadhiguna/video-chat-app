@@ -32,6 +32,14 @@ app.get('/:room', (req, res) => {
   res.render('room', { roomId: req.params.room });
 });
 
+// Admin anyone who wants to join the room
+io.on('connection', socket => {
+  // Whenever someone connects with socket.io, pass roomId and userId
+  socket.on('join-room', (roomId, userId) => {
+    console.log(roomId, userId);
+  });
+});
+
 // == Step 3 : Setup a port for server ==
 // Set a port which will be used for server
 server.listen(6000);
